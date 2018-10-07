@@ -1,0 +1,8 @@
+/*
+ * Theme Name: Editorial Timber Theme
+ * Description: Implementation of the beautiful Html5up's Editorial theme for Wordpress with Timber library using the Twig template system. Based on the skeleton of Timber Starter Theme
+ * Author: Matias Benedetto
+*/
+
+@import "static/assets/css/main.css";
+@import "static/assets/css/font-awesome.min.css";
