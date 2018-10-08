@@ -5,8 +5,8 @@
 ///
 
 /* Sidebar */
+	#search, .widget_search {
 
-	#search {
 		form {
 			@include icon;
 			position: relative;
@@ -28,8 +28,16 @@
 				width: _size(element-height) / 1.375;
 			}
 
+			label{
+				display: none;
+			}
+
 			input[type="text"] {
 				padding-right: _size(element-height);
+			}
+
+			input[type="submit"] {
+				display: none;
 			}
 		}
 	}
@@ -57,6 +65,10 @@
 			position: relative;
 			width: _size(sidebar-width);
 
+			li{
+				list-style: none;
+			}
+
 			> * {
 				border-bottom: solid 2px _palette(border);
 				margin: 0 0 (_size(element-margin) * 1.75) 0;
@@ -73,7 +85,7 @@
 				}
 			}
 
-			> .alt {
+			> .alt, .widget_search{
 				background-color: darken(_palette(bg-alt), 2);
 				border-bottom: 0;
 				margin: ($pad * -1) 0 ($pad * 2) ($pad * -1);
@@ -126,7 +138,7 @@
 				@include padding($pad, $pad, (0, 0, $pad, 0));
 				width: _size(sidebar-width-alt);
 
-				> .alt {
+				> .alt, .widget_search {
 					margin: ($pad * -1) 0 ($pad * 2) ($pad * -1);
 					padding: $pad;
 					width: calc(100% + #{$pad * 2});

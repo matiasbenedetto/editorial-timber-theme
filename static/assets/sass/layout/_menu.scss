@@ -6,7 +6,7 @@
 
 /* Menu */
 
-	#menu {
+	#menu, .widget_nav_menu div{
 		ul {
 			@include vendor('user-select', 'none');
 			color: _palette(fg-bold);

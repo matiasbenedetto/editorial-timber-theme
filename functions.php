@@ -8,6 +8,8 @@
  * @since   Timber 0.1
  */
 
+
+
 if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function() {
 		echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
@@ -36,6 +38,7 @@ Timber::$autoescape = false;
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php")
  */
+
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
@@ -44,6 +47,7 @@ class StarterSite extends Timber\Site {
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'loadScripts' ) );
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
@@ -64,9 +68,11 @@ class StarterSite extends Timber\Site {
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
 		$context['menu'] = new Timber\Menu();
+		$context['sidebar'] = Timber::get_sidebar('sidebar.php');
 		$context['site'] = $this;
 		return $context;
 	}
+
 
 	public function theme_supports() {
 		// Add sidebar support for the theme
@@ -125,8 +131,8 @@ class StarterSite extends Timber\Site {
 		
 		// Register Main Sidebar
 		$main_sidebar = array(
-			'name'          => __( 'Main Sidebar', 'main_sidebar' ),
-			'id'            => 'main-sidebar',
+			'name'          => "Sidebar",
+			'id'            => 'main_sidebar',
 			'description'   => '',
 				'class'         => '',
 			'before_widget' => '<li id="%1$s" class="widget %2$s">',
@@ -135,8 +141,6 @@ class StarterSite extends Timber\Site {
 			'after_title'   => '</h2>'
 		);
 		register_sidebar( $main_sidebar );
-
-
 
 
 	}
@@ -159,6 +163,11 @@ class StarterSite extends Timber\Site {
 		$twig->addFilter( new Twig_SimpleFilter( 'myfoo', array( $this, 'myfoo' ) ) );
 		return $twig;
 	}
+
+	function loadScripts(){
+		wp_enqueue_script( 'main-js', get_template_directory_uri().'/static/assets/js/dist/main.js', array(), "1", true );
+	}
+
 
 }
 

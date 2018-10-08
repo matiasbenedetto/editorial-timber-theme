@@ -10,6 +10,7 @@
 		<div id="wrapper">
 			<div id="main">
 				<div class="inner">
+
 					<header id="header">
 						{% block header %}
 							<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
@@ -23,29 +24,17 @@
 						{% endblock %}
 					</header>
 
-					<section id="content" role="main" class="content-wrapper">
-						{% if title %}<h1>{{title}}</h1>{% endif %}
-						<div class="wrapper {{sidebar_class}}">
-							{% block content %}
-								Sorry, no content
-							{% endblock %}
-						</div>
-						{% if sidebar %}
-							<aside class="layout-sidebar">
-								{{sidebar}}
-							</aside>
-						{% endif %}
-					</section>
-
-					{% block footer %}
-						<footer id="footer">
-							{% include 'footer.twig' %}
-						</footer>
-						{{ function('wp_footer') }}
+					{% block content %}
+						Sorry, no content
 					{% endblock %}
 
-				</div>
-			</div>
-		</div>	
+				</div> <!-- inner -->
+			</div><!-- main -->
+
+			{% if sidebar %}
+				{{sidebar}}
+			{% endif %}
+		</div>
+		{{ function('wp_footer') }}	
 	</body>
 </html>
