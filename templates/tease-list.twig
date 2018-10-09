@@ -1,6 +1,6 @@
 <section>
     <header class="major">
-        <h2>Ipsum sed dolor</h2>
+        <h2>{% if title %}{{title}}{% else %}Latest posts{% endif %}</h2>
     </header>
     <div class="posts">
         {% for post in posts %}
