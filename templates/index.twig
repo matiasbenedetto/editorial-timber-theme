@@ -14,15 +14,18 @@
 			</ul>
 		</div>
 		<span class="image object">
-			<img src="images/pic10.jpg" alt="" />
+			<img src="{{theme.link}}/static/assets/img/samples/pic10.jpg" alt="" />
 		</span>
 	</section>
 
-	{% for post in posts %}
-		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-	{% endfor %}
+	{% include "tease-list.twig" with {posts:posts} %}
+
+	{# for post in posts #}
+		{# include ['tease-'~post.post_type~'.twig', 'tease.twig'] #}
+	{# endfor #}
+
 	
-	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+	{# include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } #}
 
 
 	
