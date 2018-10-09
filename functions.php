@@ -202,7 +202,7 @@ class StarterSite extends Timber\Site {
 	}
 
 	function loadScripts(){
-		wp_enqueue_script( 'main-js', get_template_directory_uri().'/static/assets/js/dist/main.js', array(), "1", true );
+		wp_enqueue_script( 'main-js', get_template_directory_uri().'/static/assets/js/dist/main.js', array('jquery'), "1", true );
 	}
 
 
