@@ -9,6 +9,42 @@
  */
 
 
+Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {
+
+	function widget($args, $instance) {
+		extract( $args );
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts') : $instance['title'], $instance, $this->id_base);
+		if( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
+			$number = 10;
+		$r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true ) ) );
+		if( $r->have_posts() ) :
+			echo $before_widget;
+			if( $title ) echo $before_title . $title . $after_title; ?>
+			<div class="mini-posts">
+				<?php while( $r->have_posts() ) : $r->the_post(); ?>
+					<article>				
+						<?php if ( has_post_thumbnail() ) { ?>
+							<a href="<?php the_permalink(); ?>" class="image"><img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>"/></a>	
+						<?php } ?>
+						<p><?php the_title(); ?></p>
+					</article>
+				<?php endwhile; ?>
+			</div>
+			<?php
+			echo $after_widget;
+		wp_reset_postdata();
+		endif;
+	}
+}
+
+function my_recent_widget_registration() {
+  unregister_widget('WP_Widget_Recent_Posts');
+  register_widget('My_Recent_Posts_Widget');
+}
+
+
+
+
 
 if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function() {
@@ -48,6 +84,7 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadScripts' ) );
+		add_action('widgets_init', 'my_recent_widget_registration');
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
