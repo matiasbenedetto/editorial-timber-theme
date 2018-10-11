@@ -16,6 +16,10 @@
 $context = Timber::get_context();
 $context['posts'] = new Timber\PostQuery();
 
+//$frontpage_id = get_option( 'page_on_front' );
+$context['homepage'] = new Timber\Post("home");
+
+
 $templates = array( 'index.twig' );
 if ( is_home() ) {
 	array_unshift( $templates, 'home.twig' );
