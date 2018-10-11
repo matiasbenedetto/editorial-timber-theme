@@ -14,6 +14,11 @@
 					<header id="header">
 						{% block header %}
 							<a href="{{ site.link }}" class="logo"><strong>{{site.title}}</strong> {{site.description}}</a>
+							
+							
+							{% include "menu.twig" with {menu:social_nav, extra_class:"icons"} %}
+
+							<!--
 							<ul class="icons">
 								<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 								<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -21,6 +26,7 @@
 								<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 								<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
 							</ul>
+							-->
 						{% endblock %}
 					</header>
 

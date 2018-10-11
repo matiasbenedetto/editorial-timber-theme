@@ -1,16 +1,16 @@
 {% if menu %}
-	{% if not is_submenu %}<nav class="menu">{% endif %}
-		<ul>
-			{% for item in menu %}
-				<li class="{{ item.classes | join(' ') }}">
-					{% if not item.get_children %}
-						<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>			
-					{% else %}
-						<span class="opener">{{ item.title }}</span>
-						{% include "menu.twig" with {'menu': item.get_children. 'is_submenu':true} %}
-					{% endif %}		
-				</li>
-			{% endfor %}
-		</ul>
-	{% if not is_submenu %}</nav>{% endif %}
+	<ul class="{{extra_class}}">
+		{% for item in menu.get_items %}
+			<li>
+				{% if not item.get_children %}
+					<a class="{{ item.classes | join(' ') }}" target="{{ item.target }}" href="{{ item.link }}">
+						<span class="label">{{ item.title }}</span>
+					</a>			
+				{% else %}
+					<span class="opener">{{ item.title }}</span>
+					{# include "menu.twig" with {'menu': item.get_children. 'is_submenu':true} #}
+				{% endif %}		
+			</li>
+		{% endfor %}
+	</ul>
 {% endif %}

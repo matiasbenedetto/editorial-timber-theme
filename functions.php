@@ -83,6 +83,7 @@ class StarterSite extends Timber\Site {
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'init', 'register_menus' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadScripts' ) );
 		add_action('widgets_init', 'my_recent_widget_registration');
 		parent::__construct();
@@ -104,7 +105,8 @@ class StarterSite extends Timber\Site {
 		$context['foo'] = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
-		$context['menu'] = new Timber\Menu();
+		$context['main_menu'] = new TimberMenu('main_menu');
+		$context['social_nav'] = new TimberMenu('social_nav');
 		$context['sidebar'] = Timber::get_sidebar('sidebar.php');
 		$context['site'] = $this;
 		return $context;
@@ -164,6 +166,16 @@ class StarterSite extends Timber\Site {
 		);
 
 		add_theme_support( 'menus' );
+
+
+		function register_menus() {
+			register_nav_menus(
+			  array(
+				'main_menu' => __( 'Main Menu' ),
+				'social_nav' => __( 'Social Nav' )
+			  )
+			);
+		  }
 
 		
 		// Register Main Sidebar
