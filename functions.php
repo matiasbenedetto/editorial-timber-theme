@@ -136,6 +136,11 @@ class StarterSite extends Timber\Site {
 		add_theme_support( 'post-thumbnails' );
 
 		/*
+		* Enable excerpts for pages
+		*/
+		add_post_type_support( 'page', 'excerpt' );
+
+		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
 		 */
