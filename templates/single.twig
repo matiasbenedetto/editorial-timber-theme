@@ -5,7 +5,11 @@
 		<header class="main">
 			<h1>{{post.title}}</h1>
 		</header>
-		<span class="image main"><img src="{{post.thumbnail.src}}" alt="{{post.title}}" /></span>
+
+		{% if post.get_thumbnail %}	
+			<span class="image main"><img src="{{post.thumbnail.src}}" alt="{{post.title}}" /></span>
+		{% endif %}
+
 		{{post.content}}
 	</section>
 
