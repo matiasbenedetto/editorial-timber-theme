@@ -8,7 +8,11 @@
 				<h1>{{homepage.title}}</h1>
 				<p>{{homepage.post_excerpt}}</p>
 			</header>
-			<div>{{homepage.content}}</div>
+			<div>
+				{% set paragraphs = homepage.content|split('</p>') %}
+				{% set first_paragraph = paragraphs|first ~ '</p>' %}
+				{{ first_paragraph|raw }}
+			</div>
 			<ul class="actions">
 				<li><a href="{{homepage.link}}" class="button big">More</a></li>
 			</ul>
