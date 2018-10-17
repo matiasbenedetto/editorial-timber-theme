@@ -26,7 +26,7 @@ gulp
 Live WordPress implementation on [http://mebenedetto.com](http:://mebenedetto.com)
 
 ## Why use Twig, Timber and Wordpress?
-You know that the WordPress themes are not so lyrically written in contradiction with their good slogan *"code is poetry"*. But thinking it better they could be an ode to the Spaghetti. So, away from jokes now, the code of the themes are very messy, mixing up html, php, css, and js sometimes. But the good news is that there is a solution for this headache and his name is **Timber**. This plugin makes the life  of the Wordpress developers easier implementing the **Twig template system** making that you can avoid the Spaghetti code. If you want to know more you can read [this article](https://css-tricks.com/timber-and-twig-reignited-my-love-for-wordpress/) about how Timber and Twig reignited the author's love with WordPress.
+You know that the WordPress themes are not so lyrically written, maybe in contradiction with their fine slogan "code is poetry". But thinking it better it could be an ode to the Spaghetti. Away from jokes now, the code of the themes are very messy, mixing up html, php, css, and js sometimes. But the good news is there is a solution for this headache, his name is **Timber**. This plugin makes the life  of the WordPress developers easier implementing the [**Twig template system**](https://twig.symfony.com/), so you can avoid the Spaghetti code. If you want to know more you can read [this article](https://css-tricks.com/timber-and-twig-reignited-my-love-for-wordpress/) about how Timber and Twig reignited the author's love with WordPress.
 
 
 
