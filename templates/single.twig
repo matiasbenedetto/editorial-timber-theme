@@ -3,8 +3,10 @@
 {% block content %}
 	<section class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
 		<header class="main">
-			<h1>{{post.title}}</h1>
+			<h1>{{post.title}}</h1>			
 		</header>
+
+		<p>{{post.post_excerpt}}</p>
 
 		{% if post.get_thumbnail %}	
 			<span class="image main"><img src="{{post.thumbnail.src}}" alt="{{post.title}}" /></span>
