@@ -18,7 +18,12 @@
 			</ul>
 		</div>
 		<span class="image object">
-			<img src="{{homepage.thumbnail}}" alt="" />
+			<img alt="{{homepage.title}}"
+				src="{{ homepage.thumbnail.src|resize(648, 477) }}"
+				srcset="{{ homepage.thumbnail.src|resize(648, 477)|retina(1) }} 1x,
+				{{ homepage.thumbnail.src|resize(648, 477)|retina(2) }}  2x,
+				{{ homepage.thumbnail.src|resize(648, 477)|retina(3) }}  3x,
+				{{ homepage.thumbnail.src|resize(648, 477)|retina(4) }}  4x">
 		</span>
 	</section>
 

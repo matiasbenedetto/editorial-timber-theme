@@ -1,7 +1,14 @@
 <article class="tease tease-{{post.post_type}}" id="tease-{{post.ID}}">
 	{% block content %}
 		{% if post.get_thumbnail %}
-			<a href="{{post.link}}" class="image"><img src="{{post.thumbnail.src}}" alt="{{post.title}}" /></a>
+			<a href="{{post.link}}" class="image">
+				<img alt="{{post.title}}"
+				src="{{ post.thumbnail.src|resize(640, 360) }}"
+				srcset="{{ post.thumbnail.src|resize(640, 360)|retina(1) }} 1x,
+				{{ post.thumbnail.src|resize(640, 360)|retina(2) }}  2x,
+				{{ post.thumbnail.src|resize(640, 360)|retina(3) }}  3x,
+				{{ post.thumbnail.src|resize(640, 360)|retina(4) }}  4x">
+			</a>
 		{% endif %}
 		<h3>{{post.title}}</h3>
 		<p>{{post.preview}}</p>
