@@ -1,5 +1,34 @@
 {% extends "base.twig" %}
 
+{% block head %}
+	<!-- COMMON TAGS -->
+    <meta charset="utf-8">
+    <title>{{homepage.title}}</title>
+    <!-- Search Engine -->
+    <meta name="description" content="{{homepage.post_excerpt}}">
+    <meta name="image" content="{{homepage.thumbnail.src}}">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="{{homepage.title}}">
+    <meta itemprop="description" content="{{homepage.post_excerpt}}">
+    <meta itemprop="image" content="{{homepage.thumbnail.src}}">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{homepage.title}}">
+    <meta name="twitter:description" content="{{homepage.post_excerpt}}">
+    <meta name="twitter:image:src" content="{{homepage.thumbnail.src}}">
+    <!-- Twitter - Article -->
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="{{homepage.title}}">
+    <meta name="og:description" content="{{homepage.post_excerpt}}">
+    <meta name="og:image" content="{{homepage.thumbnail.src}}">
+    <meta name="og:url" content="{{ site.link }}">
+    <meta name="og:site_name" content="{{site.name}}">
+	<meta name="og:type" content="website">
+    <!-- Open Graph - Article -->
+    <meta name="article:author" content="{{site.name}}">
+{% endblock %}
+
+
 {% block content %}
 	<section id="banner">
 		<div class="content">
